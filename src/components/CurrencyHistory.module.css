@@ -1,0 +1,12 @@
+table {
+  margin-top: 6vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  border-collapse: collapse;
+  }
+  
+tr {
+  height: 5vh;
+  border-bottom: 1pt solid black;
+}

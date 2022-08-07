@@ -4,12 +4,21 @@ import React, { useState, useEffect, useCallback } from "react";
 import './App.css';
 import Converter from './pages/Converter';
 
+const INITIAL_CURRENCIES: any = [];
 
 function App() {
 
   const [result, setResult] = useState();
+  const [convert, setConvert] = useState();
   const [currencies, setCurrency] = useState<any[]>([]);
-    
+  const [items, setItems] = useState(INITIAL_CURRENCIES);
+
+    const addCurrencyHandler = (loadedConvert: any) => {
+        setItems((prevCurrencies: any) => {
+          return [loadedConvert, ...prevCurrencies];
+        })
+    }
+    console.log(items);
     const fetchCurrencyHandler = useCallback(async () => {
 
         const myHeaders = new Headers();
@@ -35,7 +44,9 @@ function App() {
                     name: data.symbols[key],
                 });
             }
-            setCurrency(loadedCurrency)
+            setCurrency(loadedCurrency);
+            console.log(loadedCurrency);
+            
         } catch(error: any) {
 
         }
@@ -62,8 +73,19 @@ function App() {
                 throw new Error('error');
             }
             const data = await response.json();
+
+            const loadedConvert: any = {
+          
+                date: data.date,
+                result: data.result,
+                from: data.query.from,
+                to: data.query.to,
+                amount: data.query.amount,
+            };
+                      
             setResult(data.result);
-            console.log(data);
+            //setConvert(loadedConvert);
+            addCurrencyHandler(loadedConvert);
             
         } catch(error: any) {
             
@@ -81,7 +103,8 @@ function App() {
               <Converter 
                 onSubmitData={fetchExchangeHandler} 
                 result={result} 
-                currencies={currencies} 
+                currencies={currencies}
+                convert={items}
                 />
           }/>
           </Routes>

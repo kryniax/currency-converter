@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import classes from './CurrencyForm.module.css';
@@ -50,7 +50,9 @@ const CurrencyForm = (props: any) => {
                 </div>
                 <div className={classes.rowReverse}>
                     <input type="submit" value="Konwertuj"></input>
-                    <button className={classes.historyButton}><Link to="/converter/history">Historia</Link></button>
+                    <button className={classes.historyButton}>
+                        <Link to="/converter/history">Historia</Link>
+                    </button>
                 </div>
             </div>
         </form>
