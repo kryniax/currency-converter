@@ -4,8 +4,20 @@ table {
   margin-right: auto;
   width: 90%;
   border-collapse: collapse;
-  }
-  
+}
+
+.tableHead {
+  font-family: 'Open Sans Semibold', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.tableBody {
+  font-family: 'Open Sans Regular', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
 tr {
   height: 5vh;
   border-bottom: 1pt solid black;

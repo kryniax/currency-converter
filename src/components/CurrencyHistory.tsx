@@ -6,30 +6,30 @@ const CurrencyHistory = (props: any) => {
     console.log(props.convert);
     
     return(
-        <section>
+        <div>
             <table className={classes.table}>
                 <thead>
                     <tr>
-                        <th>Data</th>
-                        <th>Przed konwersją</th>
-                        <th></th>
-                        <th>Po konwersji</th>
+                        <th className={classes.tableHead}>Data</th>
+                        <th className={classes.tableHead}>Przed konwersją</th>
+                        <th className={classes.tableHead}></th>
+                        <th className={classes.tableHead}>Po konwersji</th>
                     </tr>
                 </thead>
                 <tbody>
-                {props.convert.map((convert: any, index: any) => (
-                    <tr>
-                        <th>{convert.date}</th>
-                        <th>{convert.amount+" "+convert.from}</th>
-                        <th>{"--"}</th>
-                        <th>{convert.result+" "+convert.to}</th>
+                {props.convert.map((convert: any, index: string) => (
+                    <tr key={index}>
+                        <th className={classes.tableBody}>{convert.date}</th>
+                        <th className={classes.tableBody}>{convert.amount+" "+convert.from}</th>
+                        <th className={classes.tableBody}>{">"}</th>
+                        <th className={classes.tableHead}>{convert.result.toFixed(2)+" "+convert.to}</th>
                         
                     </tr>
                 ))}
 
             </tbody>
             </table>
-        </section>
+        </div>
     )
 }
 

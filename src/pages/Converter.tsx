@@ -1,20 +1,10 @@
-import { Link, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import classes from './Converter.module.css';
 import CurrencyHistory from '../components/CurrencyHistory';
 import CurrencyForm from '../components/CurrencyForm';
 
 const Converter = (props: any) => {
-
-    const saveExpenseDataHandler = (enteredExpenseData: any) => {
-        const expenseData = {
-            ...enteredExpenseData,
-            id: Math.random().toString()
-        }
-        props.onAddExpense(expenseData);
-
-    }
-
 
     return (    
         <main>

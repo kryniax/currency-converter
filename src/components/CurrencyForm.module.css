@@ -18,22 +18,24 @@
     flex:1;  
     display: flex;
     flex-direction: column;
-    margin: 10px 5px;
+    margin: 10px 10px;
 }
 
 label {
     font-family: 'Open Sans Semibold', sans-serif;
+    font-weight: 600;
     font-size: 16px;
 }
 
-select, input[type="text"] {
+select {
     font-family: 'Open Sans Regular', sans-serif;
-    font-size: 20px;
+    font-size: 16px;
     height: 6vh;
+    width: 70%;
     padding-left: 10px;
     padding-right: 10px;
-    border: 1px solid #d6d6d6;
     border-radius: 4px;
+    color:#335566;
     background: white;
     outline: none;
     -webkit-box-shadow: 8px 8px 30px -17px rgba(66, 68, 90, 1);
@@ -41,9 +43,36 @@ select, input[type="text"] {
     box-shadow: 8px 8px 30px -20px rgba(66, 68, 90, 1);
 }
 
-input[type="submit"] {
+input[type="text"] {
     font-family: 'Open Sans Regular', sans-serif;
-    font-size: 20px;
+    font-size: 16px;
+    height: 6vh;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: 2px solid #335566;
+    color: #335566;
+    background: white;
+    outline: none;
+    -webkit-box-shadow: 8px 8px 30px -17px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 8px 8px 30px -17px rgba(66, 68, 90, 1);
+    box-shadow: 8px 8px 30px -20px rgba(66, 68, 90, 1);
+}
+
+input:focus { 
+    outline: none !important;
+    border-bottom: 2px solid #37DEFB;
+ }
+
+ ::placeholder {
+    color: #335566;
+
+  }
+
+input[type="submit"] {
+    font-family: 'Open Sans Semibold', sans-serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-size: 16px;
     height: 8vh;
     width: 10vw;
     border-radius: 5vh;
@@ -52,17 +81,22 @@ input[type="submit"] {
     margin-left: 1vw;
     margin-right: 1vw;
     color: #fff;
-    background-color: #A3B1C6;
+    background-color: #335566;
     -webkit-box-shadow: 8px 8px 21px -12px rgba(66, 68, 90, 1);
     -moz-box-shadow: 8px 8px 21px -12px rgba(66, 68, 90, 1);
     box-shadow: 8px 8px 21px -12px rgba(66, 68, 90, 1);
     cursor: pointer;
 }
 
-.historyButton {
+input[type="submit"]:hover{
+    background-color: #214456;
+}
 
-    font-family: 'Open Sans Regular', sans-serif;
-    font-size: 20px;
+.historyButton {
+    font-family: 'Open Sans Semibold', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 2px;
     height: 8vh;
     width: 10vw;
     border-radius: 5vh;
@@ -76,4 +110,30 @@ input[type="submit"] {
     -moz-box-shadow: 8px 8px 21px -12px rgba(66, 68, 90, 1);
     box-shadow: 8px 8px 21px -12px rgba(66, 68, 90, 1);
     cursor: pointer;
+}
+
+a {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    height: 6vh;
+    width: 100%;
+    outline: none;
+    text-decoration: none;
+    padding: 2px 1px 0;
+    color: #335566;
+  }
+
+a:visited {
+   color: #335566;
+}
+
+.errorInput {
+    border-bottom: 2px solid #CA163A!important;
+    
+}
+
+.errorP {
+    font-size: 12px;
+    color:#CA163A;
 }

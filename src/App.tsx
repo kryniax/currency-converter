@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import React, { useState, useEffect, useCallback } from "react";
 
 import './App.css';
@@ -9,7 +9,6 @@ const INITIAL_CURRENCIES: any = [];
 function App() {
 
   const [result, setResult] = useState();
-  const [convert, setConvert] = useState();
   const [currencies, setCurrency] = useState<any[]>([]);
   const [items, setItems] = useState(INITIAL_CURRENCIES);
 
@@ -18,11 +17,12 @@ function App() {
           return [loadedConvert, ...prevCurrencies];
         })
     }
-    console.log(items);
+    localStorage.setItem("convert", JSON.stringify(items));
+ 
     const fetchCurrencyHandler = useCallback(async () => {
 
         const myHeaders = new Headers();
-        myHeaders.append("apikey", "ACYoBZBGakoe5iXrsfRXgkyuMYkvyhFd");
+        myHeaders.append("apikey", "eBEI6Q3CsTPc5pA6ny1ORxHtM4RO1UuZ");
     
         const requestOption: {} = {
             method: "GET",
@@ -35,7 +35,7 @@ function App() {
             if(!response.ok) {
                 throw new Error('error');
             }
-            const data = await response.json();
+            const data: any = await response.json();
             const loadedCurrency: any = [];
 
             for(const key in data.symbols){
@@ -48,7 +48,7 @@ function App() {
             console.log(loadedCurrency);
             
         } catch(error: any) {
-
+            alert(error.message);
         }
     }, []);
 
@@ -58,8 +58,8 @@ function App() {
 
     const fetchExchangeHandler = useCallback(async (toCurrency: any, fromCurrency: any, amount: any) => {
         
-        const myHeaders = new Headers();
-        myHeaders.append("apikey", "ACYoBZBGakoe5iXrsfRXgkyuMYkvyhFd");
+        const myHeaders: any = new Headers();
+        myHeaders.append("apikey", "eBEI6Q3CsTPc5pA6ny1ORxHtM4RO1UuZ");
 
         const requestOption: {} = {
             method: 'GET',
@@ -68,14 +68,13 @@ function App() {
         }
 
         try{
-            const response = await fetch(`https://api.apilayer.com/exchangerates_data/convert?to=${toCurrency}&from=${fromCurrency}&amount=${amount}`, requestOption);
+            const response: any = await fetch(`https://api.apilayer.com/exchangerates_data/convert?to=${toCurrency}&from=${fromCurrency}&amount=${amount}`, requestOption);
             if(!response.ok) {
                 throw new Error('error');
             }
             const data = await response.json();
 
-            const loadedConvert: any = {
-          
+            const loadedConvert: {} = {         
                 date: data.date,
                 result: data.result,
                 from: data.query.from,
@@ -84,11 +83,10 @@ function App() {
             };
                       
             setResult(data.result);
-            //setConvert(loadedConvert);
             addCurrencyHandler(loadedConvert);
             
         } catch(error: any) {
-            
+            alert(error.message);
         }
     }, []);
 
@@ -98,7 +96,7 @@ function App() {
       <main>
         <section className='converter'>
           <Routes>
-          <Route index element={<Converter />} />
+          <Route element={<Converter />}/>
           <Route path="/converter/*" element={
               <Converter 
                 onSubmitData={fetchExchangeHandler} 
@@ -107,6 +105,7 @@ function App() {
                 convert={items}
                 />
           }/>
+          <Route path="*" element={<Navigate replace to="/converter/"/>}/>
           </Routes>
         </section>
       </main>
