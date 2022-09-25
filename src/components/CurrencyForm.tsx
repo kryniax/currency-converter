@@ -16,7 +16,7 @@ const CurrencyForm = (props: any) => {
         setToggleButton(!button);
     }
 
-    const formHandler = (event: any) => {
+    const formHandler = (event: React.FormEvent<HTMLFormElement>) => {
 
         event.preventDefault();
         const enteredFromCurrency: string = fromCurrencyRef.current.value;
