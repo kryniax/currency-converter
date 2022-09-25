@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import classes from './CurrencyHistory.module.css';
 
-const CurrencyHistory = (props: any) => {
+type Props = {
+    convert: ConvertCurrencies[];
+}
+
+const CurrencyHistory = (props: Props) => {
 
     console.log(props.convert);
     
@@ -17,7 +21,7 @@ const CurrencyHistory = (props: any) => {
                     </tr>
                 </thead>
                 <tbody>
-                {props.convert.map((convert: any, index: string) => (
+                {props.convert.map((convert: ConvertCurrencies, index: number) => (
                     <tr key={index}>
                         <th className={classes.tableBody}>{convert.date}</th>
                         <th className={classes.tableBody}>{convert.amount+" "+convert.from}</th>

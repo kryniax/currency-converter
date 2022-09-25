@@ -4,7 +4,14 @@ import classes from './Converter.module.css';
 import CurrencyHistory from '../components/CurrencyHistory';
 import CurrencyForm from '../components/CurrencyForm';
 
-const Converter = (props: any) => {
+type Props = {
+    onSubmitData: (toCurrency: string, fromCurrency: string, amount: number) => Promise<void>;
+    result: number | undefined;
+    currencies: AllCurencies[];
+    convert: ConvertCurrencies[];
+}
+
+const Converter = (props: Props) => {
 
     return (    
         <main>

@@ -4,20 +4,6 @@ import { useState, useEffect, useCallback } from "react";
 import './App.css';
 import Converter from './pages/Converter';
 
-type AllCurencies = {
-  name: object;
-  symbols: string;
-}
-
-type ConvertCurrencies = {
-  amount: number;
-  date: string;
-  from: string;
-  result: number;
-  success: boolean;
-  to: string;
-}
-
 type CurrencyData = {
   success: boolean;
   symbols: object;
@@ -134,7 +120,6 @@ function App() {
       <main>
         <section className='converter'>
           <Routes>
-          <Route element={<Converter />}/>
           <Route path="/converter/*" element={
               <Converter 
                 onSubmitData={fetchExchangeHandler} 
