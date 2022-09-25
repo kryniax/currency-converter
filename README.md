@@ -1,3 +1,5 @@
 # Currency Conventer
 
-Simple app to convert currencies with Exchange Rates Data API
+Simple app to convert currencies with Exchange Rates Data API. 
+
+Krystian Kozak
